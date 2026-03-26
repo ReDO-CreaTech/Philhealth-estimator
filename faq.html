@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0f172a">
+    <title>FAQ | PhilHealth Estimator</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="pwa-ui.js"></script> 
+    <script defer src="x.js"></script>
+</head>
+
+<body>
+    <div id="offlineBanner" class="offline-banner hidden">⚠ You are offline. Some features may be limited.</div>
+
+    <!-- Header (same as main page) -->
+    <header class="header">
+        <div class="header-container">
+    
+            <div>
+                <h1>SIYASAT <span>LOGIC LAB</span></h1>
+                <p>PhilHealth Case Rate Estimator v1.0</p>
+            </div>
+
+            <nav id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="faq.html" class="active">FAQ</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <button id="installBtn" class="install-btn hidden">Install App</button>
+            <div class="menu-toggle" id="menuToggle">☰</div>
+        </div>
+
+    </header>
+
+    <main class="main-full">
+
+    <section class="card">
+
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+
+        <!-- SEARCH -->
+        <input 
+            type="text" 
+            id="faqSearch" 
+            placeholder="Search questions..." 
+            class="faq-search"
+        >
+
+        <div id="faqList">
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>What is the PhilHealth Case Rate Estimator?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    This tool is an unofficial reference designed to help PhilHealth members estimate potential hospital benefit coverage based on specific medical cases. It uses data from PhilHealth Annex A and Annex B case rate files.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>How accurate are these estimates?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Disclaimer: These figures are estimates only. The final amount deducted from your hospital bill depends on the actual diagnosis, professional fees, and hospital-specific billing.
+Always verify the final amount with the hospital’s billing department or the PhilHealth Member Portal.
+                </div>
+                
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What is PhilHealth case rate?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                   PhilHealth case rate is a fixed amount that PhilHealth pays for a specific illness or procedure, regardless of the actual hospital bill.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What is No Balance Billing (NBB)?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                     NBB means qualified patients in government hospitals should not pay anything beyond what PhilHealth covers, subject to eligibility.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Why is my estimated balance ₱0.00?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    This may mean your bill is fully covered by PhilHealth or you may qualify for No Balance Billing (NBB).
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Is this result final?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    No. This is only an estimate. Final billing and eligibility are determined by the hospital and PhilHealth.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>Why is the rate the same for Level 1, 2, and 3 hospitals?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    For the cases in this tool (Annex A & B), PhilHealth typically uses a standardized rate across these facility levels. While the PhilHealth deduction is the same, the hospital’s actual charges will vary.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>Does this include Primary Care Facility (PCF) rates?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    No, PCF rates (often found in PhilHealth Annex D) are not included in this version of the estimator.
+If you are seeking treatment at a Primary Care Facility or infirmary, please consult the facility directly for their specific PhilHealth rates.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>How does "No Balance Billing" (NBB) affect my estimate?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    If you are an NBB-eligible member (such as Indigents, Sponsored members, or Senior Citizens) and are admitted to a basic ward in a government hospital, you should not be charged anything beyond the PhilHealth case rate
+The estimator shows the case rate PhilHealth pays; if you qualify for NBB, your personal "out-of-pocket" expense should be zero in accredited government facilities.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>Is this result final?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    No. This is only an estimate. Final billing and eligibility are determined by the hospital and PhilHealth.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>What should I do if the hospital's calculation is different?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Hospitals may have different pricing for medicines, supplies, or specialized professional fees that can exceed the fixed PhilHealth case rate
+This tool does not account for private room upgrades, non-covered medicines, or excess professional fees.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>Where does the data come from?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    The calculations are based on data files derived from official PhilHealth Circulars for Annex A and Annex B.
+  As PhilHealth updates their rates periodically, please check for the latest circulars on the PhilHealth Official Website.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>How does the tool calculate coverage for two conditions?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    If you select two medical cases, the estimator automatically applies the "100/50 rule."
+It identifies the higher-priced case and calculates 100% of its value, while the lower-priced case is calculated at 50%.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>Can I always claim two case rates?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    No. Multiple case rates are only allowed if the conditions are distinct and recognized as "complications" or "co-morbidities" under specific PhilHealth guidelines.
+Your final claim will still be reviewed by a PhilHealth medical officer, who may decide only one case is eligible.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>Does the estimator include the 2024–2025 rate increases?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    PhilHealth has recently implemented 30% to 50% rate adjustments for several case rates.
+This tool is updated manually. If the official PhilHealth Circular No. 2024-0037 has more recent figures, those take precedence over this estimator.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>What if my illness is not in the list?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    This tool uses data from Annex A and B. If your condition is listed in Annex D (PCF) or other specialized packages (like Z-Benefits), it will not appear here.
+Absence from this list does not mean you aren't covered; it just means it is outside the scope of this specific calculator.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>Is my personal data saved?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    No. This estimator is for informational purposes only. We do not store your Health Care Institution (HCI) details or personal health information.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>Who should I contact for official disputes?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    For official billing concerns, contact your hospital’s PhilHealth section or the PhilHealth Action Center. This tool has no official affiliation with the government.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>How to Use the Case Rate Estimator?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    To get the most accurate estimate, you will need the specific medical or procedure codes used by PhilHealth.<br><br>
+<strong>1. Identify your Case Type</strong> <br>
+
+PhilHealth categorizes cases into two types:<br>
+Medical Cases (ICD-10): These are for illnesses (e.g., Pneumonia, Dengue, Hypertension). They use ICD-10 codes, which are typically alphanumeric (e.g., A90 for Dengue Fever).
+Surgical/Procedure Cases (RVS): These are for operations or medical procedures (e.g., Appendectomy, Dialysis, Cesarean Section). They use RVS codes, which are 5-digit numeric codes (e.g., 59510 for a C-Section). 
+<br>
+<strong>2. Where to Find These Codes?</strong><br>
+If you are currently at the hospital or have already been treated, you can find these codes in the following places:
+Ask Your Doctor: Ask your attending physician for the Final Diagnosis (ICD-10) or the Procedure Code (RVS).
+PhilHealth Claim Form 2 (CF2): If you have a copy of your discharge papers or PhilHealth forms, look for the "Case Rate Code" section.
+Billing Statement: Some hospitals include the ICD-10 or RVS code next to the PhilHealth deduction on your statement. 
+<br>
+<strong>3. Searching in the Estimator</strong><br>
+Step 1: Enter the ICD-10 or RVS code directly into the input field for the fastest result.<br>
+Step 2: If you don't have a code, try searching by Description (e.g., "Pneumonia"). Note that descriptions must match PhilHealth’s official terminology to appear.<br>
+Step 3 (Optional): If you have two conditions, enter the second code in the "Second Case" field. The tool will automatically calculate 100% of the more expensive case and 50% of the cheaper one. <br>
+<strong>4. Check Your Facility Level</strong><br>
+Ensure you know if your hospital is Level 1, 2, or 3. Rates for the same illness often differ based on the hospital's equipment and specialization level.<br> 
+<strong>Important Reminder:</strong><br>
+This tool is for Annex A (Medical) and Annex B (Surgical) cases only. If your code starts with specialized letters or is a Primary Care Facility (Annex D) case, it may not be supported by this estimator. 
+
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>Why does my search return no results?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    The case might be listed under a different name, or it may fall under Annex D (PCF) or Z-Benefit packages, which are not currently supported by this estimator.
+Additionally, the estimated PhilHealth coverage may exceed your actual hospital bill, or your membership category may qualify you for No Balance Billing (NBB). These situations can significantly affect your final out-of-pocket cost.
+For accurate confirmation, you should verify directly with PhilHealth personnel or the billing section of your hospital, as final computations may vary depending on case classification, eligibility, and hospital policies.
+                </div>
+                
+            </div>
+
+             <div class="faq-item">
+                <button class="faq-question">
+                    <span>Why doesn't the estimator ask for the Hospital Level (1, 2, or 3)?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    For most cases in Annex A and B, PhilHealth uses the same standard case rate regardless of whether the hospital is Level 1, 2, or 3. To make your estimate quick and easy, this tool uses that standard rate without asking for the hospital level.
+                </div>
+                
+            </div>
+
+                         <div class="faq-item">
+                <button class="faq-question">
+                    <span>Should I rely solely on this estimator for my hospital budget?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    No. This is an unofficial tool for estimation only. Always verify the final deduction with your hospital’s billing department or the official PhilHealth Member Portal to avoid financial surprises.
+                </div>
+                
+            </div>
+
+                         <div class="faq-item">
+                <button class="faq-question">
+                    <span>If hospital levels have the same PhilHealth rate, will my total bill be the same everywhere?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    No. Even though the PhilHealth discount is fixed, hospitals have different rates for rooms and supplies. Your out-of-pocket expenses will vary depending on the hospital’s specific pricing.
+                </div>
+                
+            </div>
+
+                         <div class="faq-item">
+                <button class="faq-question">
+                    <span>Who is behind this project?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    This tool is developed by Siyasat Logic Lab, an independent health-tech firm led by a solo entrepreneur. We combine "Siyasat" (careful inquiry) with "Logic" (engineering) to provide families with financial certainty during medical crises.
+                </div>
+                
+            </div>
+
+                         <div class="faq-item">
+                <button class="faq-question">
+                    <span>What is the "Raven's Path" philosophy?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                     It is our core mission inspired by Thought (Huginn) and Memory (Muninn). We use Logic to process complex PhilHealth data and Memory to digitize fragmented healthcare costs, acting as a "Digital Raven" to guide patients through the system.
+                </div>
+                
+            </div>
+
+                         <div class="faq-item">
+                <button class="faq-question">
+                    <span>Can I use this estimator for my own hospital, LGU, or clinic?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Yes. We offer White-Labeling and Licensing for our calculation engine. I can provide a dedicated version of this App for your organization under a professional service contract.
+                </div>
+                
+            </div>
+
+                         <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do you offer custom versions with specific facility rates?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Absolutely. While this tool uses standard PhilHealth rates, Siyasat Logic Lab can build a specialized version for your facility that includes your specific room rates, medicine markups, and professional fees.
+                </div>
+                
+            </div>
+
+                         <div class="faq-item">
+                <button class="faq-question">
+                    <span>How can I contact Siyasat Logic Lab for business deals?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    For partnerships, LGU deployments, or licensing inquiries, you can reach the founder directly at <strong>siyasatlogiclab@gmail.com</strong>. No corporate gatekeepers, just the Raven.
+                </div>
+                
+            </div>
+
+                         <div class="faq-item">
+                <button class="faq-question">
+                    <span>Is there a way to support this project or donate?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    As a solo-led project, your support keeps our servers running and our data updated. If this tool helped you, you can "Support the Raven" via Gcash account. Every donation helps us reach more families in remote (GIDA) areas.
+                </div>
+                
+            </div>
+
+                         <div class="faq-item">
+                <button class="faq-question">
+                    <span>Why use this tool?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    We built this tool to work even in places with poor internet, so you can check your PhilHealth coverage and hospital costs anytime without needing to download anything from an app store.
+                </div>
+                
+            </div>
+
+                         <div class="faq-item">
+                <button class="faq-question">
+                    <span>Are you open to collaborating with LGUs or private providers?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    Yes. Our goal is to turn "Data Silos" into "Patient Solutions." We are actively looking for partners in the Philippines to deploy high-impact MVPs that help citizens navigate healthcare costs.
+                </div>
+                
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<script defer src="app.js"></script>
+
+<script> 
+const questions = document.querySelectorAll(".faq-question");
+
+questions.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const currentAnswer = btn.nextElementSibling;
+        const currentIcon = btn.querySelector(".icon");
+
+        // 🔥 CLOSE ALL FIRST
+        document.querySelectorAll(".faq-answer").forEach(ans => {
+            if (ans !== currentAnswer) {
+                ans.classList.remove("show");
+            }
+        });
+
+        document.querySelectorAll(".faq-question .icon").forEach(ic => {
+            ic.textContent = "+";
+        });
+
+        // 🔥 TOGGLE CURRENT
+        const isOpen = currentAnswer.classList.contains("show");
+
+        if (isOpen) {
+            currentAnswer.classList.remove("show");
+            currentIcon.textContent = "+";
+        } else {
+            currentAnswer.classList.add("show");
+            currentIcon.textContent = "–";
+        }
+    });
+});
+
+
+
+// SEARCH
+document.getElementById("faqSearch").addEventListener("input", function() {
+    const value = this.value.toLowerCase();
+    const items = document.querySelectorAll(".faq-item");
+
+    items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(value) ? "block" : "none";
+    });
+});
+
+</script>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    // 1. SETUP THE TOGGLE CLICK
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", (e) => {
+            // Stop click from immediately bubbling to the 'document' listener below
+            e.stopPropagation(); 
+            navMenu.classList.toggle("show");
+        });
+
+        // 2. AUTO-CLOSE ON RESIZE
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove("show");
+            }
+        });
+    }
+});
+
+// 3. GLOBAL CLICK LISTENER (Outside DOMContentLoaded is fine)
+document.addEventListener("click", (event) => {
+    const navMenu = document.getElementById("navMenu");
+    const menuToggle = document.getElementById("menuToggle");
+
+    // Exit if elements don't exist on this page or menu isn't even open
+    if (!navMenu || !menuToggle || !navMenu.classList.contains("show")) return;
+
+    const isClickInsideMenu = navMenu.contains(event.target);
+    const isClickOnToggle = menuToggle.contains(event.target);
+
+    // If click is outside BOTH, close it
+    if (!isClickInsideMenu && !isClickOnToggle) {
+        navMenu.classList.remove("show");
+    }
+});
+</script>
+
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => console.log('SW registered'))
+      .catch(err => console.log('SW error', err));
+  });
+}
+</script>
+
+
+</body>
+</html>

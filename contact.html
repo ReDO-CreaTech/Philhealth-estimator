@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0f172a">
+<script defer src="pwa-ui.js"></script> 
+<title>Contact | PhilHealth Estimator</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="x.js"></script>
+</head>
+
+<body>
+
+    <div id="offlineBanner" class="offline-banner hidden">⚠ You are offline. Some features may be limited.</div>
+
+    <!-- Header (same as main page) -->
+    <header class="header">
+        <div class="header-container">
+    
+            <div>
+                <h1>SIYASAT <span>LOGIC LAB</span></h1>
+                <p>PhilHealth Case Rate Estimator v1.0</p>
+            </div>
+
+            <nav id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="faq.html">FAQ</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+            
+            <button id="installBtn" class="install-btn hidden">Install App</button>
+            <div class="menu-toggle" id="menuToggle">☰</div>
+        </div>
+
+    </header>
+
+<main class="contact-center-grid">
+
+<section class="grid-container">
+    <!-- Card 1: Contact Form -->
+    <div class="card">
+        <h2>We value your feedback!☺️</h2>
+        <form id="contactForm">
+            <div class="field">
+                <label>Name</label>
+                <input type="text" required>
+            </div>
+
+            <div class="field">
+                <label>Email</label>
+                <input type="email" required>
+            </div>
+
+            <div class="field">
+                <label>Message</label>
+                <textarea rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+
+        <p id="formMsg" class="hidden success-msg">
+            Message saved locally (offline mode).
+        </p>
+    </div>
+
+    <!-- Card 2: Contact Info -->
+    <div class="card">
+        <h2>Contact Info</h2>
+        <p><strong>Address:</strong> Lingayen, Pangasinan</p>
+        <p><strong>Email:</strong> siyasatlogiclab@gmail.com</p>
+        <p>We are committed to developing practical, transparent, and accessible tools that help Filipinos better understand healthcare costs and benefits.</p>
+    </div>
+
+    <!-- Card 3: Support -->
+    <div class="card">
+        <h2>Support Our Work</h2>
+        <p>If you believe in using technology to create real-world impact, your support helps us continue building solutions that matter.</p>
+        <a href="#" class="support-btn">Send Support (GCash / PayPal)</a>
+    </div>
+</section>
+
+</main>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = {
+        name: this[0].value,
+        email: this[1].value,
+        message: this[2].value,
+        date: new Date().toISOString()
+    };
+    let messages = JSON.parse(localStorage.getItem("messages") || "[]");
+    messages.push(data);
+    localStorage.setItem("messages", JSON.stringify(messages));
+    document.getElementById("formMsg").classList.remove("hidden");
+    this.reset();
+});
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+        });
+
+        // Optional: auto-close nav on resize
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove("show");
+            }
+        });
+    }
+});
+
+
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => console.log('SW registered'))
+      .catch(err => console.log('SW error', err));
+  });
+}
+</script>
+
+<script src="/sw.js"></script>
+
+</body>
+</html>

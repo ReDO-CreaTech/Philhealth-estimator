@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0f172a">
+    <title>Home | PhilHealth Estimator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="x1.js"></script>
+    <script src="x2.js"></script>
+    <script defer src="pwa-ui.js"></script> 
+    <script defer src="x.js"></script>
+
+</head>
+
+<body>
+
+    <div id="offlineBanner" class="offline-banner">⚠ You are offline. Some features may be limited.</div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+    
+            <div>
+                <h1>SIYASAT <span>LOGIC LAB</span></h1>
+                <p>PhilHealth Case Rate Estimator v1.0</p>
+            </div>
+
+            <nav id="navMenu">
+                <a href="/index.html" class="active">Home</a>
+                <a href="/faq.html">FAQ</a>
+                <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
+            </nav>
+            
+            <button id="installBtn" class="install-btn hidden">Install App</button>
+            <div class="menu-toggle" id="menuToggle">☰</div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+    <!-- Search Section -->
+        <div class="left-panel">
+            <section class="card">
+                <p class="trust-strip">Built to simplify PhilHealth case rates and hospital billing estimates for everyday use.</p>
+
+                    <div class="search-container">
+                    <!-- First Search Box -->
+                        <div class="field search-field" style="position: relative;">
+                            <label for="searchBox1" class="block text-sm font-semibold mb-2">
+                                Search Condition / Procedure (Primary)
+                            </label>
+                            <input 
+                            type="text" 
+                            id="searchBox1" 
+                            placeholder="e.g. Dengue, Pneumonia..." 
+                            class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                        >
+                        <div id="resultsDropdown1" class="dropdown hidden">
+                            <div id="noResults1" class="hidden p-2 text-sm text-slate-400">
+                                No results found
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second Search Box -->
+                    <div class="field search-field" style="position: relative;">
+                        <label for="searchBox2" class="block text-sm font-semibold mb-2">Search Condition / Procedure (Secondary)</label>
+                        <input 
+                            type="text" 
+                            id="searchBox2" 
+                            placeholder="Optional second condition..." 
+                            class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                        >
+                        <div id="resultsDropdown2" class="dropdown hidden">
+                            <div id="noResults2" class="hidden p-2 text-sm text-slate-400">
+                                No results found
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error -->
+                <p id="errorMessage" class="hidden text-xs text-red-500 mt-1">Please select a valid condition from the list.</p>
+            </section>
+
+            <!-- Settings -->
+            <section class="grid">
+
+                <div>
+                    <label for="hospitalType" class="block text-xs font-bold uppercase text-slate-500 mb-1">
+                        <strong> Hospital Type:</strong>
+                    </label>
+                    <select id="hospitalType" class="w-full p-2 bg-white border rounded-md">
+                        <option value="public">Government</option>
+                        <option value="private">Private</option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label for="memberType" class="block text-xs font-bold uppercase text-slate-500 mb-1">
+                        <strong>Member Type:</strong>
+                    </label>
+                    <select id="memberType" class="w-full p-2 bg-white border rounded-md">
+                        <option value="regular">Regular</option>
+                        <option value="indigent">Indigent (DSWD)</option>
+                        <option value="sponsored">Sponsored</option>
+                        <option value="senior">Senior Citizen</option>
+                        <option value="pwd">PWD</option>
+                        <option value="kasambahay">Kasambahay</option>
+                    </select>
+                </div>
+
+
+            </section>
+
+                <div class="field bill-input">
+                    <label>What is your hospital bill?</label>
+                    <input type="number" id="totalBillInput" placeholder="Enter total bill">
+                </div>
+
+                <div id="govNote" class="hidden text-sm text-green-600 mt-2"></div>
+        </div>
+
+            <!-- Result -->
+        <div class="right-panel">
+            <section id="resultCard" class="hidden result-card">
+
+                <h2 id="caseName">Diagnosis</h2>
+
+                <!-- ICD Code -->
+                <p id="caseCode"></p>
+
+                <div class="divider">
+
+                    <div class="row">
+                        <span>PhilHealth Covers:</span>
+                        <span id="phCover" class="font-mono font-bold">₱0.00</span>
+                    </div>
+
+                    <div class="row subtle">
+                        <span>Your hospital bill:</span>
+                        <span id="totalBill">₱0.00</span>
+                    </div>
+
+                    <div class="total">
+                        <span>Estimated Balance:</span>
+                        <span id="finalPay">₱0.00</span>
+                    </div>
+                </div>
+
+                <div id="nbbMessage" class="hidden nbb-banner">
+                    ✔ No Balance Billing applies. Your bill should be ₱0.00.
+                </div>
+
+            </section>
+        </div>
+
+    </main>
+
+    <div id="disclaimerModal" class="modal">
+  <div class="modal-content">
+    <h2>Terms of Use and Disclaimer</h2>
+
+<p>By using this PhilHealth Case Rate Estimator (the "Tool"), you acknowledge and agree to the following:</p>
+
+<ol>
+  <li><strong>No Official Affiliation</strong><br>
+      This Tool is an independent project and is not affiliated with, endorsed by, or connected to the Philippine Health Insurance Corporation (PhilHealth). All information provided is for general reference and educational purposes only.
+  </li>
+
+  <li><strong>Estimates Only</strong><br>
+      The results generated are non-binding estimates. Actual PhilHealth coverage depends on hospital billing, medical diagnosis, and PhilHealth's internal adjudication. Accuracy, completeness, or timeliness of calculations is not guaranteed.
+  </li>
+
+  <li><strong>Coverage Limitations (Annex A & B Only)</strong><br>
+      <ul>
+        <li><strong>Facility Levels:</strong> Only rates for Level 1, 2, and 3 hospitals are included.</li>
+        <li><strong>Excluded Rates:</strong> Primary Care Facilities (PCF) or infirmaries listed in PhilHealth Annex D are not included.</li>
+        <li><strong>Updates:</strong> While the tool includes recent 50% adjustments from Circular 2024-0037, users should consult official PhilHealth Circulars for authoritative data.</li>
+      </ul>
+  </li>
+
+  <li><strong>Multiple Case Rate Logic</strong><br>
+      Calculations for two conditions follow the guideline of 100% of the higher rate plus 50% of the lower rate. Not all cases can be claimed simultaneously; final adjudication depends on PhilHealth rules.
+  </li>
+
+  <li><strong>Limitation of Liability</strong><br>
+      The developer is not liable for any financial discrepancies, losses, or damages resulting from use of or reliance on this Tool. For official confirmation, please consult your hospital billing department or the PhilHealth Member Portal.
+  </li>
+</ol>
+    <button id="closeDisclaimer" class="btn">I Understand</button>
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', function() {
+    const modal = document.getElementById('disclaimerModal');
+    const closeBtn = document.getElementById('closeDisclaimer');
+
+    modal.style.display = 'block'; // show modal on page load
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Optional: close if user clicks outside the modal
+    // window.addEventListener('click', (e) => {
+    //     if (e.target === modal) {
+    //         modal.style.display = 'none';
+    //     }
+    // });
+});
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => console.log('SW registered'))
+      .catch(err => console.log('SW error', err));
+  });
+}
+</script>
+
+ <script>
+
+const nav = document.getElementById('navMenu');
+const menuToggle = document.getElementById("menuToggle");
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        nav.classList.remove('show'); // match the class your CSS uses
+    }
+});
+ </script>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0f172a">
+    <title>About | Siyasat Logic Labs</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="pwa-ui.js"></script> 
+    <script defer src="x.js"></script>
+</head>
+
+<body>
+
+    <div id="offlineBanner" class="offline-banner hidden">⚠ You are offline. Some features may be limited.</div>
+
+    <!-- Header (same as main page) -->
+    <header class="header">
+        <div class="header-container">
+    
+            <div>
+                <h1>SIYASAT <span>LOGIC LAB</span></h1>
+                <p>PhilHealth Case Rate Estimator v1.0</p>
+            </div>
+
+            <nav id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="faq.html">FAQ</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <button id="installBtn" class="install-btn hidden">Install App</button>
+            <div class="menu-toggle" id="menuToggle">☰</div>
+        </div>
+
+    </header>
+
+<main>
+
+    <!-- HERO -->
+    <section class="card about-hero">
+        <h2>About Siyasat Logic Lab</h2>
+        <p>
+            Siyasat Logic Lab is an early-stage health-tech initiative focused on improving transparency in healthcare costs for Filipinos through simple, practical digital tools.
+           <br> We design systems that translate complex healthcare policies into clear, actionable information, especially for underserved and low-connectivity communities.
+        </p>
+    </section>
+
+    <!-- MISSION -->
+    <section class="card">
+        <h3>Our Mission</h3>
+        <p>
+            To make healthcare costs understandable before patients make critical decisions, reducing uncertainty, financial stress, and misinformation.
+        </p>
+    </section>
+
+    <!-- PROBLEM / SOLUTION -->
+    <section class="card">
+        <h3>Overview</h3>
+        <div class="about-grid">
+        <div>
+            <h4>Problem</h4>
+            <p>
+                Many patients enter hospitals without knowing what they will pay.
+                This lack of cost transparency leads to confusion, delayed decisions, and unnecessary financial burden.
+            </p>
+        </div>
+
+        <div>
+            <h4>Solution</h4>
+            <p>
+                We build lightweight, offline-capable tools that estimate hospital bills using PhilHealth case rates and user inputs, providing immediate clarity even in low-connectivity environments.
+            </p>
+        </div>
+
+        <div>
+            <h4>Current Product</h4>
+            <p>
+                PhilHealth Estimator (MVP)
+                A simple calculator that predicts PhilHealth coverage and expected patient balance based on real case rates.
+            </p>
+        </div>
+
+        <div>
+            <h4>Vision</h4>
+            <p>
+                To become a standardized healthcare cost intelligence platform used by patients, providers, and institutions across the Philippines.
+            </p>
+        </div>
+
+        </div>
+    </section>
+
+    <!-- CORE CAPABILITIES -->
+<section class="card">
+    <h3>Core Capabilities</h3>
+    <div class="about-grid">
+
+        <div>
+            <h4>Offline-First Systems</h4>
+            <p>
+                Applications designed to function even without internet connection, ensuring usability in rural areas, hospital basements, and low-signal environments.
+            </p>
+        </div>
+
+        <div>
+            <h4>Healthcare Cost Logic</h4>
+            <p>
+                Structured computation of PhilHealth case rates and patient bill estimates based on real policies and user inputs.
+            </p>
+        </div>
+
+        <div>
+            <h4>Lightweight Web Apps</h4>
+            <p>
+                Installable browser-based tools that eliminate the need for app store downloads, reducing friction for users.
+            </p>
+        </div>
+
+        <div>
+            <h4>Data Structuring</h4>
+            <p>
+                Converting fragmented public healthcare data into simple, usable, and searchable formats for everyday use.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- WHY THIS MATTERS -->
+
+    <!-- CALL TO ACTION -->
+<section class="card about-cta">
+    <h3>Support & Collaboration</h3>
+
+    <p class="cta-text">
+        We are currently building and refining early-stage solutions. 
+        We welcome collaboration with developers, healthcare professionals, 
+        and partners who share the goal of improving healthcare accessibility.
+    </p>
+
+    <a href="#" class="support-btn">Partner / Support This Project</a>
+
+    <div class="cta-footer-info">
+    <div class="info-grid">
+        <div>
+            <p><strong>Address</strong></p>
+            <p>Lingayen, Pangasinan</p>
+        </div>
+
+        <div>
+            <p><strong>Email</strong></p>
+            <p>
+                <a href="mailto:siyasatlogiclab@gmail.com">
+                    siyasatlogiclab@gmail.com
+                </a>
+            </p>
+        </div>
+    </div>
+          <div class="info-social">
+        <p><strong>Social</strong></p>
+        <p>
+            <a href="#">Facebook</a> |
+            <a href="#">Twitter</a> |
+            <a href="#">LinkedIn</a>
+        </p>
+    </div>
+    </div>
+
+    <div class="cta-bottom">
+        <p>© 2026 Siyasat Logic Lab. All rights reserved.</p>
+        <p class="disclaimer">
+            All information provided is for educational purposes. 
+            Verify official PhilHealth policies before admission.
+        </p>
+    </div>
+</section>
+
+
+<section class="card logo-section">
+    <img src="icons/logo.png" alt="Company Logo" class="logo">
+</section>
+
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+        });
+
+        // Optional: auto-close nav on resize
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove("show");
+            }
+        });
+    }
+});
+
+document.addEventListener("click", (event) => {
+    const navMenu = document.getElementById("navMenu");
+    const menuToggle = document.getElementById("menuToggle");
+
+    // Only run if both elements exist on the current page
+    if (!navMenu || !menuToggle) return;
+
+    const isClickInsideMenu = navMenu.contains(event.target);
+    const isClickOnToggle = menuToggle.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnToggle) {
+        navMenu.classList.remove("show");
+    }
+});
+
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => console.log('SW registered'))
+      .catch(err => console.log('SW error', err));
+  });
+}
+</script>
+
+<script src="/sw.js"></script>
+
+</body>
+</html>
