@@ -91,11 +91,21 @@ self.addEventListener('fetch', event => {
   const request = event.request;
 
   // 1. Handle page navigation (Try cache, then network, then fall back to index)
-  if (request.mode === 'navigate') {
+    if (request.mode === 'navigate') {
     event.respondWith(
-      caches.match(request) // 1. Try to match specific page (/about.html)
-        .then(response => response || fetch(request)) // 2. Try Network
-        .catch(() => caches.match('/index.html')) // 3. Fallback to index.html
+      // 1. Try the network first so users see the latest content
+      fetch(request)
+        .then(response => {
+          // If the network finds the page, return it
+          if (response.ok) return response;
+          
+          // 2. If network says 404, try to find it in the cache
+          return caches.match(request);
+        })
+        .catch(() => {
+          // 3. If totally offline AND not in cache, show index
+          return caches.match('/index.html');
+        })
     );
     return;
   }
