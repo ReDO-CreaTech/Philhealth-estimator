@@ -2,15 +2,15 @@ const CACHE_NAME = "siyasat-cache-v8";
 
 const urlsToCache = [
   "/",
-  "/index.html",
-  "/faq.html",
-  "/about.html",
-  "/contact.html",
-  "/style.css",
-  "/x.js",
-  "/x1.js",
-  "/x2.js",
-  "/manifest.json"
+  "index.html",
+  "faq.html",
+  "about.html",
+  "contact.html",
+  "style.css",
+  "x.js",
+  "x1.js",
+  "x2.js",
+  "manifest.json"
 ];
 
 // INSTALL
