@@ -898,13 +898,13 @@ textarea {
 }
 
 @media (max-width: 768px) {
-    .modal-content {
-        width: 85%;       /* Use percentages for mobile */
-        max-width: none;  /* Remove the pixel cap */
-        height: auto;     /* Let the content define the height */
-        max-height: 70vh; /* Keep it scrollable if it's long */
+    div.modal .modal-content { /* Added 'div.modal' for higher specificity */
+        width: 85% !important;  /* Use !important only as a last resort for testing */
+        max-width: none;
+        height: auto;
     }
 }
+
 
 
 .modal-content h2 {
