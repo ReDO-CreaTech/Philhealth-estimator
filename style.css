@@ -900,7 +900,8 @@ textarea {
 @media (max-width: 768px) {
     /* Mobile: place below header content */
     .modal-content {
-        max-width: 100%;
+        max-width: 300px;
+        height: 100px;
     }
 }
 
