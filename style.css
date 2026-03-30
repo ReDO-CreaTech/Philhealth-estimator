@@ -853,8 +853,8 @@ textarea {
     .modal-content {
     background-color: white;
     padding: 20px 24px;
-    max-width: 500px;
-    max-height: 80vh;           /* scrollable if too tall */
+    max-width: 700px;
+    max-height: 50vh;           /* scrollable if too tall */
     overflow-y: auto;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
