@@ -125,6 +125,23 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 
 </script>
 
+    document.addEventListener("click", (event) => {
+    const navMenu = document.getElementById("navMenu");
+    const menuToggle = document.getElementById("menuToggle");
+
+    // Exit if elements don't exist on this page or menu isn't even open
+    if (!navMenu || !menuToggle || !navMenu.classList.contains("show")) return;
+
+    const isClickInsideMenu = navMenu.contains(event.target);
+    const isClickOnToggle = menuToggle.contains(event.target);
+
+    // If click is outside BOTH, close it
+    if (!isClickInsideMenu && !isClickOnToggle) {
+        navMenu.classList.remove("show");
+    }
+});
+</script>
+
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
