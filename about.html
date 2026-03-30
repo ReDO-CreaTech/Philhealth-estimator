@@ -220,6 +220,27 @@ document.addEventListener("click", (event) => {
 });
 
 </script>
+
+    <script>
+    // Disable Right-Click
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
+    document.addEventListener('keydown', e => {
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && e.key === 'I') || // Inspect
+            (e.ctrlKey && e.shiftKey && e.key === 'J') || // Console
+            (e.ctrlKey && e.key === 'U') || // View Source
+            (e.ctrlKey && e.key === 'S')    // Save
+        ) {
+            e.preventDefault();
+            alert("Source code protection: Copying disabled.");
+        }
+    });
+</script>
+
+    
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
