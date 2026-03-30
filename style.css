@@ -897,13 +897,18 @@ textarea {
     transform: translate(-50%, -50%);
 }
 
-@media (max-width: 768px) {
-    div.modal .modal-content { /* Added 'div.modal' for higher specificity */
-        width: 85% !important;  /* Use !important only as a last resort for testing */
-        max-width: none;
-        height: auto;
+@media only screen and (max-width: 768px) {
+    /* Target the element more specifically to beat other styles */
+    div.modal-content {
+        width: 90% !important;   /* Force it to expand */
+        max-width: 90% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important; /* Ensure it stays centered */
+        height: auto !important;
+        max-height: 80vh !important;
     }
 }
+
 
 
 
