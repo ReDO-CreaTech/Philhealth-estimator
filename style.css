@@ -898,21 +898,14 @@ textarea {
 }
 
 @media (max-width: 768px) {
-    /* Mobile: place below header content */
-.modal-content {
-    width: 90%;          /* 1. Sets a fluid base width */
-    max-width: 600px;    /* 2. Caps it so it doesn't get too huge on desktop */
-    
-    /* ... rest of your code ... */
-    background-color: white;
-    padding: 20px 24px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    .modal-content {
+        width: 85%;       /* Use percentages for mobile */
+        max-width: none;  /* Remove the pixel cap */
+        height: auto;     /* Let the content define the height */
+        max-height: 70vh; /* Keep it scrollable if it's long */
+    }
 }
 
-}
 
 .modal-content h2 {
     margin-bottom: 12px;
