@@ -897,6 +897,13 @@ textarea {
     transform: translate(-50%, -50%);
 }
 
+@media (max-width: 768px) {
+    /* Mobile: place below header content */
+    .modal-content {
+        max-width: 100%;
+    }
+}
+
 .modal-content h2 {
     margin-bottom: 12px;
     text-align: center;
