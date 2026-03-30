@@ -850,22 +850,6 @@ textarea {
         text-align: center;
     }
 
-    .modal-content {
-    background-color: white;
-    padding: 20px 24px;
-    width: 700px;
-    max-height: 50vh;           /* scrollable if too tall */
-    overflow-y: auto;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    text-align: left;
-
-    /* Center vertically + horizontally */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
      #installBtn {
         order: 2;
